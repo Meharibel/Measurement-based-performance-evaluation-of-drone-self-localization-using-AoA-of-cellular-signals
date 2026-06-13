@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated paper."
+title: "MATLAB code for measurement-based drone self-localization using cellular AoA"
+type: software
+authors:
+  - family-names: "Meles"
+    given-names: "Mehari"
+repository-code: "https://github.com/Meharibel/Measurement-based-performance-evaluation-of-drone-self-localization-using-AoA-of-cellular-signals"
+preferred-citation:
+  type: conference-paper
+  title: "Measurement based performance evaluation of drone self-localization using AoA of cellular signals"
+  authors:
+    - family-names: "Meles"
+      given-names: "Mehari"
+    - family-names: "Rajasekaran"
+      given-names: "Akash"
+    - family-names: "Ruttik"
+      given-names: "Kalle"
+    - family-names: "Virrankoski"
+      given-names: "Reino"
+    - family-names: "Jantti"
+      given-names: "Riku"
+  collection-title: "2021 24th International Symposium on Wireless Personal Multimedia Communications (WPMC)"
+  publisher:
+    name: "IEEE"
+  year: 2021
+  month: 12
+  start: 1
+  end: 5
+  doi: "10.1109/WPMC52694.2021.9700407"

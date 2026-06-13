@@ -1,0 +1,7 @@
+*.asv
+*.autosave
+*.m~
+*.mex*
+slprj/
+codegen/
+results/generated/

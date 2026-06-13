@@ -124,6 +124,9 @@ editor was used.
 
 ### Localization Error
 
+The larger-error curve represents the hovering-drone measurements, while the
+smaller-error curve represents the stationary-drone measurements.
+
 ![Least-squares localization error CDF](results/figures/localization_error_cdf.png)
 
 ### Estimated Drone Positions

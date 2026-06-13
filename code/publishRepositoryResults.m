@@ -21,6 +21,23 @@ function publishRepositoryResults()
         mkdir(tableDirectory);
     end
 
+    deprecatedFigureNames = [
+        "localization_error_cdf_all_estimators.png"
+        "localization_error_cdf_all_estimators.pdf"
+    ];
+    for figureIndex = 1:length(deprecatedFigureNames)
+        generatedFigure = fullfile( ...
+            generatedDirectory, deprecatedFigureNames(figureIndex));
+        publishedFigure = fullfile( ...
+            figureDirectory, deprecatedFigureNames(figureIndex));
+        if isfile(generatedFigure)
+            delete(generatedFigure);
+        end
+        if isfile(publishedFigure)
+            delete(publishedFigure);
+        end
+    end
+
     previousRandomState = rng;
     randomStateCleanup = onCleanup(@() rng(previousRandomState));
     rng(12345);
@@ -33,7 +50,6 @@ function publishRepositoryResults()
         "aoa_column3_histogram.png"
         "aoa_difference_histogram.png"
         "localization_error_cdf.png"
-        "localization_error_cdf_all_estimators.png"
         "localization_trajectory_sigma_3.6deg.png"
         "localization_trajectory_sigma_6deg.png"
     ];

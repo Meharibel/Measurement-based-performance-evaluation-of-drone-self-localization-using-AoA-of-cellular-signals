@@ -82,7 +82,7 @@ These points were documented rather than silently corrected:
 - Replaced platform-specific PDF crop/delete commands with `exportgraphics`.
 - Added explicit, correct plot labels and 300 dpi PNG/vector PDF exports.
 - Added summary CSV and MAT outputs.
-- Kept the paper-style least-squares CDF separate from the optional
-  auxiliary-estimator comparison.
+- Kept the published CDF focused on the paper's least-squares hovering and
+  stationary cases; no auxiliary-estimator curve is displayed.
 - Added `publishRepositoryResults.m` so every figure displayed on GitHub is
   regenerated and exported directly by MATLAB without image post-processing.

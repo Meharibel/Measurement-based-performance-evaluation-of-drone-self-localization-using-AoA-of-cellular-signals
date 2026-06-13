@@ -176,7 +176,6 @@ function results = simulateDroneLocalization(outputDirectory, rngSeed)
 
     createTrajectoryPlots(results, outputDirectory);
     createPaperCdfPlot(results, outputDirectory);
-    createEstimatorComparisonPlot(results, outputDirectory);
 end
 
 function summary = createSummary(leastSquaresErrorsM, auxiliaryErrorsM, ...
@@ -285,61 +284,15 @@ function createPaperCdfPlot(results, outputDirectory)
     xlabel("Absolute localization error (m)");
     ylabel("Cumulative probability");
     title("Least-squares drone localization error");
-    legend(compose("AoA std. dev. %.1f deg", ...
-        results.settings.angleErrorStdDeg), Location="southeast");
+    legend([
+        compose("Drone hovering (AoA std. dev. %.1f deg)", ...
+            results.settings.angleErrorStdDeg(1))
+        compose("Drone stationary (AoA std. dev. %.1f deg)", ...
+            results.settings.angleErrorStdDeg(2))
+    ], Location="southeast");
     set(gca, FontName="Arial", FontSize=13, LineWidth=1);
 
     outputBaseName = fullfile(outputDirectory, "localization_error_cdf");
-    exportgraphics(figureHandle, outputBaseName + ".png", Resolution=300);
-    exportgraphics(figureHandle, outputBaseName + ".pdf", ...
-        ContentType="vector");
-    close(figureHandle);
-end
-
-function createEstimatorComparisonPlot(results, outputDirectory)
-    figureHandle = figure(Color="white", Position=[100 100 900 600]);
-    colors = [
-        0.00 0.45 0.74
-        0.85 0.33 0.10
-    ];
-
-    hold on;
-    legendLabels = strings( ...
-        2 * length(results.settings.angleErrorStdDeg), 1);
-    legendIndex = 0;
-    for caseIndex = 1:length(results.settings.angleErrorStdDeg)
-        [leastSquaresCdf, leastSquaresErrorM] = ecdf( ...
-            results.leastSquaresErrorsM(caseIndex, :));
-        [auxiliaryCdf, auxiliaryErrorM] = ecdf( ...
-            results.auxiliaryErrorsM(caseIndex, :));
-
-        plot(leastSquaresErrorM, leastSquaresCdf, ...
-            Color=colors(caseIndex, :), LineWidth=2.1);
-        plot(auxiliaryErrorM, auxiliaryCdf, "--", ...
-            Color=colors(caseIndex, :), LineWidth=2.1);
-
-        legendIndex = legendIndex + 1;
-        legendLabels(legendIndex) = sprintf( ...
-            "LS, %.1f deg", results.settings.angleErrorStdDeg(caseIndex));
-        legendIndex = legendIndex + 1;
-        legendLabels(legendIndex) = sprintf( ...
-            "Auxiliary, %.1f deg", ...
-            results.settings.angleErrorStdDeg(caseIndex));
-    end
-    hold off;
-
-    grid on;
-    box on;
-    xlim([0 100]);
-    ylim([0 1]);
-    xlabel("Absolute localization error (m)");
-    ylabel("Cumulative probability");
-    title("Localization estimator comparison");
-    legend(legendLabels, Location="southeast");
-    set(gca, FontName="Arial", FontSize=13, LineWidth=1);
-
-    outputBaseName = fullfile( ...
-        outputDirectory, "localization_error_cdf_all_estimators");
     exportgraphics(figureHandle, outputBaseName + ".png", Resolution=300);
     exportgraphics(figureHandle, outputBaseName + ".pdf", ...
         ContentType="vector");

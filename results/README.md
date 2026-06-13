@@ -14,7 +14,6 @@ The generated directory contains:
 
 - AoA histograms as 300 dpi PNG and vector PDF files
 - Localization trajectory plots
-- Least-squares localization-error CDF
-- Optional least-squares/auxiliary-estimator comparison
+- Least-squares localization-error CDF for hovering and stationary cases
 - CSV summary tables
 - MAT result files

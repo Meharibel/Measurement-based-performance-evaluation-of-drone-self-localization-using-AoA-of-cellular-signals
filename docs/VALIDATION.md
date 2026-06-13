@@ -84,3 +84,5 @@ These points were documented rather than silently corrected:
 - Added summary CSV and MAT outputs.
 - Kept the paper-style least-squares CDF separate from the optional
   auxiliary-estimator comparison.
+- Added `publishRepositoryResults.m` so every figure displayed on GitHub is
+  regenerated and exported directly by MATLAB without image post-processing.

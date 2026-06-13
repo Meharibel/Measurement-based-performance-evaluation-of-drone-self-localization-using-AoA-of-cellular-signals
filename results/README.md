@@ -1,11 +1,14 @@
-# Generated Results
+# MATLAB-Generated Results
 
 Run `code/runReproduction.m` to create `results/generated/`.
 
-The curated figures in `figures/` and summary tables in `tables/` are included
-for convenient viewing on GitHub. The displayed Monte Carlo examples were
-generated with `rng(12345)` so that their provenance is explicit. The model
-constants remain the supplied values.
+Run `code/publishRepositoryResults.m` to reproduce the figures in `figures/`
+and summary tables in `tables/`. The displayed Monte Carlo examples use
+`rng(12345)` so that the same MATLAB run can be repeated. The model constants
+remain the supplied values.
+
+Every PNG in `figures/` is copied byte-for-byte from MATLAB's `exportgraphics`
+output. No generative AI or external image editor is used.
 
 The generated directory contains:
 

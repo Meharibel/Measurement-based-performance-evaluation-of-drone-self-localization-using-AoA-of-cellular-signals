@@ -20,8 +20,8 @@ The project has two processing stages:
    least-squares estimator in a hexagonal cellular layout.
 
 The cleaned code preserves the numerical constants and calculations in the
-files supplied by the author. Formatting, naming, documentation, plot styling,
-output handling, and array preallocation have been improved.
+files supplied by the author. Formatting, naming, documentation, MATLAB figure
+labels, output handling, and array preallocation have been improved.
 
 Untouched source files are retained in `legacy/supplied_files/` for
 traceability.
@@ -32,6 +32,7 @@ traceability.
 .
 |-- code/
 |   |-- estimateAoAFromMeasurements.m
+|   |-- publishRepositoryResults.m
 |   |-- runReproduction.m
 |   |-- simulateDroneLocalization.m
 |   `-- twoElemAntenna.m
@@ -71,6 +72,16 @@ runReproduction;
 
 Generated figures, tables, and MAT files are written to `results/generated/`.
 
+To regenerate the exact figures displayed in this README, run:
+
+```matlab
+addpath("code");
+publishRepositoryResults;
+```
+
+This publishing function uses `rng(12345)` for the Monte Carlo example and
+exports every displayed PNG directly from MATLAB with `exportgraphics`.
+
 To make the Monte Carlo simulation repeat exactly, set the random-number state
 before running:
 
@@ -100,6 +111,10 @@ See `docs/VALIDATION.md` for the audit results and scientific items that were
 intentionally not changed.
 
 ## Example Results
+
+**Figure provenance:** Every image below is an unmodified PNG exported directly
+by the MATLAB code in this repository. No generative AI or external image
+editor was used.
 
 ### Measurement-Based AoA Estimates
 
